@@ -17,7 +17,7 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
       <SEO title={post.title} description={post.subtitle} />
       <article>
         <header>
-          <Img fluid={post.image.fluid}/>
+          <Img fluid={post.image.fluid} style={{width: "20rem"}}/>
           <h1
             style={{
               marginTop: rhythm(1),
