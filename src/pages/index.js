@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import { motion } from "framer-motion"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -21,7 +22,7 @@ const HeroContainer = styled.div`
   grid-row-gap: 0px;
 `
 
-const HeroMainSection = styled.div`
+const HeroMainSection = styled(motion.div)`
   background-color: #4b565d;
   display: flex;
   flex-direction: column;
@@ -41,8 +42,6 @@ const HeroLeftSection = styled.div``
 
 const HeroRightSection = styled.div``
 
-
-
 const Post = styled.div`
   display: flex;
 `
@@ -60,25 +59,49 @@ const PostText = styled.div`
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulPost.edges
-  const heroTitle = data.contentfulHero.heroTitle
+  const heroTitle = data.contentfulHero.heroImage.title
+  const heroImg = data.contentfulHero.heroImage.fluid
+  const heroImgRight = data.contentfulNew.pic.fluid
 
   return (
     <Layout location={location} title={siteTitle}>
       <HeroContainer>
-        <HeroMainSection>
-          <h1>Vasiliy Khurtin</h1>
+        <HeroMainSection
+          // animate={{
+          //   x: [70, 120, 90, 0],
+          //   y: [-3, -6, -12, 0],
+          //   scale: [1, 2, 2, 1],
+          //   // rotate: 0,
+          // }}
+        >
+          <motion.h1 animate={{ scale: [1, 1.3, 1.3, 1] }}>
+            Vasiliy Khurtin
+          </motion.h1>
           <p>Interior Photographer</p>
         </HeroMainSection>
         <HeroLeftSection>
-          <p>{heroTitle}</p>
+          <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
+            {heroTitle}
+          </p>
+          <Img
+            fluid={heroImg}
+            objectFit="cover"
+            objectPosition="50% 50%"
+            style={{ height: "100%" }}
+          ></Img>
         </HeroLeftSection>
         <HeroRightSection>
-          <h4>Right</h4>
+          <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
+            {heroTitle}
+          </p>
+          <Img
+            fluid={heroImgRight}
+            objectFit="cover"
+            objectPosition="50% 50%"
+            style={{ height: "100%" }}
+          ></Img>
         </HeroRightSection>
       </HeroContainer>
-      <div>
-        <h3>{heroTitle}</h3>
-      </div>
 
       <SEO title="All posts" />
       <Bio />
@@ -115,29 +138,46 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-         query {
-           site {
-             siteMetadata {
-               title
-             }
-           }
-           allContentfulPost {
-             edges {
-               node {
-                 title
-                 subtitle
-                 image {
-                   fluid {
-                     ...GatsbyContentfulFluid
-                   }
-                 }
-                 author
-                 slug
-               }
-             }
-           }
-           contentfulHero {
-             heroTitle
-           }
-         }
-       `
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allContentfulPost {
+      edges {
+        node {
+          title
+          subtitle
+          image {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+          author
+          slug
+        }
+      }
+    }
+    contentfulHero {
+      heroTitle
+      heroImage {
+        title
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
+    }
+    contentfulNew {
+      pic {
+        title
+        fluid {
+          base64
+          tracedSVG
+          srcWebp
+          srcSetWebp
+        }
+      }
+    }
+  }
+`
