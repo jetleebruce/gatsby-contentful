@@ -19,12 +19,14 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
       <article>
         <header>
           <Img fluid={post.image.fluid} style={{ width: "20rem" }} />
+          <div>
+            {post.pics.map((img, i) => {
+              console.log(img)
 
-          {post.pics.map((img, i) => {
-            console.log(img)
+              return <Img key={i} fluid={img.fluid} alt={img.title} />
+            })}
+          </div>
 
-            return <Img key={i} fluid={img.fluid} alt={""} />
-          })}
           <h1
             style={{
               marginTop: rhythm(1),
