@@ -9,7 +9,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-// import Hero from '../components/hero'
+import Behance from "../images/behance.svg"
 
 const HeroContainer = styled.div`
   width: 100%;
@@ -18,7 +18,7 @@ const HeroContainer = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-column-gap: 1px;
+  // grid-column-gap: 1px;
   grid-row-gap: 0px;
 `
 
@@ -31,6 +31,7 @@ const HeroMainSection = styled(motion.div)`
   h1 {
     color: #bcc0c2;
     margin: 0 auto;
+    padding-bottom: 1rem;
   }
   p {
     color: #bcc0c2;
@@ -38,9 +39,9 @@ const HeroMainSection = styled(motion.div)`
   }
 `
 
-const HeroLeftSection = styled.div``
+const HeroLeftSection = styled(motion.div)``
 
-const HeroRightSection = styled.div``
+const HeroRightSection = styled(motion.div)``
 
 const Post = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <SEO title="Vasiliy Khurtin" />
       <HeroContainer>
         <HeroMainSection
           // animate={{
@@ -73,13 +75,37 @@ const BlogIndex = ({ data, location }) => {
           //   scale: [1, 2, 2, 1],
           //   // rotate: 0,
           // }}
+          animate={{
+            x: [-950, -700, -500, 0],
+          }}
         >
-          <motion.h1 animate={{ scale: [1, 1.3, 1.3, 1] }}>
+          <motion.h1
+            animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
+            transition={{ duration: 2 }}
+          >
             Vasiliy Khurtin
           </motion.h1>
           <p>Interior Photographer</p>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              boxShadow: "0 currentColor",
+            }}
+          >
+            <Link to="https://www.behance.net/vshrt">
+              <img src={Behance} style={{ width: "2rem" }}></img>
+            </Link>
+          </div>
         </HeroMainSection>
-        <HeroLeftSection>
+        <HeroLeftSection
+          animate={{
+            y: [-950, -700, -500, 0],
+          }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 1.2 }}
+        >
           <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
             {heroTitle}
           </p>
@@ -90,7 +116,12 @@ const BlogIndex = ({ data, location }) => {
             style={{ height: "100%" }}
           ></Img>
         </HeroLeftSection>
-        <HeroRightSection>
+        <HeroRightSection
+          animate={{
+            y: [950, 700, 500, 0],
+          }}
+          transition={{ duration: 1.2 }}
+        >
           <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
             {heroTitle}
           </p>
@@ -103,8 +134,7 @@ const BlogIndex = ({ data, location }) => {
         </HeroRightSection>
       </HeroContainer>
 
-      <SEO title="All posts" />
-      <Bio />
+      {/* <Bio /> */}
       {posts.map(({ node }) => {
         const title = node.title || node.slug
         return (
@@ -147,6 +177,7 @@ export const pageQuery = graphql`
     allContentfulPost {
       edges {
         node {
+          id
           title
           subtitle
           image {
@@ -154,6 +185,7 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
+          
           author
           slug
         }

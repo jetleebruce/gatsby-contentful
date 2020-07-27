@@ -1,11 +1,11 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Img from 'gatsby-image'
+import Img from "gatsby-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulPost
@@ -15,9 +15,16 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.title} description={post.subtitle} />
+
       <article>
         <header>
-          <Img fluid={post.image.fluid} style={{width: "20rem"}}/>
+          <Img fluid={post.image.fluid} style={{ width: "20rem" }} />
+
+          {post.pics.map((img, i) => {
+            console.log(img)
+
+            return <Img key={i} fluid={img.fluid} alt={""} />
+          })}
           <h1
             style={{
               marginTop: rhythm(1),
@@ -79,15 +86,19 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-      
       }
     }
     contentfulPost(slug: { eq: $slug }) {
       title
       subtitle
       author
-      image{
-        fluid{
+      image {
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
+      pics {
+        fluid {
           ...GatsbyContentfulFluid
         }
       }
