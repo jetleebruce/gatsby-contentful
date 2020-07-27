@@ -106,7 +106,8 @@ const BlogIndex = ({ data, location }) => {
           //   // rotate: 0,
           // }}
           animate={{
-            x: [-950, -700, -500, 0],
+            x: [-550, -300, -200, 0],
+            opacity: [0.1, 0.3, 0.5, 1],
           }}
         >
           <motion.h1
