@@ -77,13 +77,26 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
             </HeaderWrapper>
           </header>
           <GalleryWrapper>
-            <ImageGalleryWrapper>
-              {post.pics.map((img, i) => {
-                console.log(img)
+            
+              <div>
+                {post.pics.map((img, i) => {
+                  console.log(img)
 
-                return <Img key={i} fluid={img.fluid} alt={img.title} />
-              })}
-            </ImageGalleryWrapper>
+                  return (
+                    <ImageGalleryWrapper style={{ marginBottom: "15px" }}>
+                    <Img
+                      key={i}
+                      fluid={img.fluid}
+                      alt={img.title}
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                      
+                      />
+                    </ImageGalleryWrapper>
+                  )
+                })}
+              </div>
+            
           </GalleryWrapper>
 
           <hr
