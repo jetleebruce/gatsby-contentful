@@ -6,7 +6,6 @@ import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
 
 import Behance from "../images/behance.svg"
 import Cover from "../images/space.jpg"
@@ -43,54 +42,73 @@ const HeroMainSection = styled(motion.div)`
   }
 `
 
-const HeroLeftSection = styled(motion.div)`
-  
-`
+const HeroLeftSection = styled(motion.div)``
 
 const HeroRightSection = styled(motion.div)``
- 
 
-const Post = styled.div`
-  display: flex;
-`
-
-const PostImage = styled.div`
-  flex: 25%;
-  margin-right: 1rem;
-  width: 15rem;
-  position: relative;
-`
-
-const PostText = styled.div`
-  flex: 75%;
-`
 // Section with Magazin cover
 
 const SectionMagazinWrapper = styled.div`
 margin: : 0 auto;
-padding: 10rem 5rem;
+padding: 5rem 5rem;
+margin-top: 1.5rem;
 display: flex;
-flex-direction: row;
-
+flex-direction: column;
 `
 
 const MagazinImageWrapper = styled.div`
   margin: 0 auto;
+  margin-top: 1.5rem;
 `
 
 const MagazinTextWrapper = styled.div`
   margin: 0 auto;
-
-  h2{
-font-family: "Lato", serif;
+  display: flex;
+  flex-direction: column;
+  span {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    justify-content: center;
+  }
+  h2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700 bold;
+    text-transform: uppercase;
+    font-size: 2.5rem;
   }
 `
 
 // Section with Posts (title, image)
 
 const SectionWrapper = styled.div`
-margin: : 0 auto;
-padding: 2rem 2rem;
+  margin: : 0 auto;
+  padding: 2rem 2rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  // grid-column-gap: 1px;
+  grid-row-gap: 0px;
+`
+
+const PostWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: 25rem;
+`
+
+const Post = styled.div``
+
+const PostImage = styled.div`
+  // flex: 25%;
+  margin-right: 1rem;
+  // width: 25rem;
+  position: relative;
+`
+
+const PostText = styled.div`
+  // flex: 75%;
 `
 
 const BlogIndex = ({ data, location }) => {
@@ -179,42 +197,40 @@ const BlogIndex = ({ data, location }) => {
       </HeroContainer>
 
       <SectionMagazinWrapper>
-        <MagazinImageWrapper>
-          <img src={Cover} style={{ height: "42rem" }}></img>
-        </MagazinImageWrapper>
         <MagazinTextWrapper>
           <h2>Фото для обложки журнала #ПР92</h2>
           <span> Кафе «Космос» на ВДНХ</span>
         </MagazinTextWrapper>
+        <MagazinImageWrapper>
+          <img src={Cover} style={{ height: "42rem" }}></img>
+        </MagazinImageWrapper>
       </SectionMagazinWrapper>
 
       <SectionWrapper>
-        {posts.map(({ node }) => {
-          const title = node.title || node.slug
-          return (
-            <Post key={node.slug}>
-              <PostImage>
-                <Img fluid={node.image.fluid} />
-              </PostImage>
-              <PostText>
-                <header>
-                  <h3
-                    style={{
-                      marginBottom: rhythm(1 / 4),
-                    }}
-                  >
+        
+          {posts.map(({ node }) => {
+            const title = node.title || node.slug
+            return (
+              <Post key={node.slug}>
+                <PostImage>
+                  <Img fluid={node.image.fluid}></Img>
+                  <p>Hello</p>
+                </PostImage>
+                <PostText>
+                  <h3>
                     <Link style={{ boxShadow: `none` }} to={node.slug}>
                       {title}
                     </Link>
                   </h3>
-                </header>
-                <section>
-                  <p>{node.subtitle}</p>
-                </section>
-              </PostText>
-            </Post>
-          )
-        })}
+
+                  <section>
+                    <p>{node.subtitle}</p>
+                  </section>
+                </PostText>
+              </Post>
+            )
+          })}
+        
       </SectionWrapper>
     </Layout>
   )

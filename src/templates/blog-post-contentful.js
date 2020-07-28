@@ -34,6 +34,7 @@ const HeaderTextWrapper = styled.div`
 `
 
 const GalleryWrapper = styled.div`
+
   max-width: 90%;
   margin: 0 auto;
   margin-left: auto;
@@ -44,6 +45,7 @@ const GalleryWrapper = styled.div`
   }
 `
 const ImageGalleryWrapper = styled.div`
+
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;

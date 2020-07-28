@@ -8,19 +8,32 @@ const ProjectWrapper = styled.div`
   margin: 0 auto;
 `
 
+const HeaderWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 1px;
+  grid-row-gap: 0px;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 3.5rem;
+`
+
 const Projects = ({ data, location }) => {
   const projects = data.allContentfulPost.edges
 
   return (
     <ProjectWrapper>
-      {projects.map(({ node }) => {
-        const title = node.title || node.slug
-        return (
-          <div key={node.slug}>
-            <Img fluid={node.image.fluid} />
-          </div>
-        )
-      })}
+      <HeaderWrapper>
+        {projects.map(({ node }) => {
+          const title = node.title || node.slug
+          return (
+            <div key={node.slug}>
+              <Img fluid={node.image.fluid} />
+            </div>
+          )
+        })}
+      </HeaderWrapper>
     </ProjectWrapper>
   )
 }
