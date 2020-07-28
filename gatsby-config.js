@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config({path:`.env`})
 
 module.exports = {
   siteMetadata: {
@@ -80,7 +80,7 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `16efukykllxe`,
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
         downloadLocal: true,
       },
