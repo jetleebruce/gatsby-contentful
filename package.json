@@ -62,6 +62,6 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "develop_env_cmd": "env-cmd gatsby develop",
+    "develop_env_cmd": "env-cmd gatsby develop"
   }
 }

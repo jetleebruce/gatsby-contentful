@@ -83,6 +83,7 @@ module.exports = {
       options: {
         spaceId: `16efukykllxe`,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
       },
     },
     `@contentful/gatsby-transformer-contentful-richtext`,
