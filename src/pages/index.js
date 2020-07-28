@@ -98,7 +98,10 @@ const PostWrapper = styled.div`
   height: 25rem;
 `
 
-const Post = styled.div``
+const Post = styled.div`
+  position: relative;
+  margin-bottom: 2rem;
+`
 
 const PostImage = styled.div`
   // flex: 25%;
@@ -109,6 +112,30 @@ const PostImage = styled.div`
 
 const PostText = styled.div`
   // flex: 75%;
+  position: absolute;
+  top: 0;
+  margin: 2.5rem;
+ 
+  h3 a {
+    color: white;
+    font-size: 2.5rem;  
+    margin-bottom: 0;
+    background-color: darkblue;
+    font-family: Lato, sans;
+  }
+
+  p{
+    color: white;
+    background-color: darkblue;
+    
+  }
+  }
+`
+
+const AllProjLinkWrapper = styled.div``
+
+const AllProjLink = styled.div`
+  margin: 0 auto;
 `
 
 const BlogIndex = ({ data, location }) => {
@@ -207,31 +234,38 @@ const BlogIndex = ({ data, location }) => {
       </SectionMagazinWrapper>
 
       <SectionWrapper>
-        
-          {posts.map(({ node }) => {
-            const title = node.title || node.slug
-            return (
-              <Post key={node.slug}>
-                <PostImage>
-                  <Img fluid={node.image.fluid}></Img>
-                  <p>Hello</p>
-                </PostImage>
-                <PostText>
-                  <h3>
-                    <Link style={{ boxShadow: `none` }} to={node.slug}>
-                      {title}
-                    </Link>
-                  </h3>
+        {posts.map(({ node }) => {
+          const title = node.title || node.slug
+          return (
+            <Post key={node.slug}>
+              <PostImage>
+                <Img
+                  fluid={node.image.fluid}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  style={{ height: "100%", position: "relative" }}
+                />
+              </PostImage>
+              <PostText>
+                <h3>
+                  <Link style={{ boxShadow: `none` }} to={node.slug}>
+                    {title}
+                  </Link>
+                </h3>
 
-                  <section>
-                    <p>{node.subtitle}</p>
-                  </section>
-                </PostText>
-              </Post>
-            )
-          })}
-        
+                <section>
+                  <p>{node.subtitle}</p>
+                </section>
+              </PostText>
+            </Post>
+          )
+        })}
       </SectionWrapper>
+      <AllProjLinkWrapper>
+        <AllProjLink>
+          <Link to="/projects">Все работы</Link>
+        </AllProjLink>
+      </AllProjLinkWrapper>
     </Layout>
   )
 }
@@ -256,8 +290,6 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
           }
-
-          author
           slug
         }
       }

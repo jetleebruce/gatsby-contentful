@@ -152,7 +152,6 @@ export const pageQuery = graphql`
     contentfulPost(slug: { eq: $slug }) {
       title
       subtitle
-      author
       image {
         fluid {
           ...GatsbyContentfulFluid
