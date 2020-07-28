@@ -85,6 +85,7 @@ module.exports = {
         spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
         downloadLocal: true,
+        host: "cdn.contentful.com"
       },
     },
     `@contentful/gatsby-transformer-contentful-richtext`,
