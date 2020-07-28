@@ -56,7 +56,7 @@ display: flex;
 flex-direction: column;
 `
 
-const MagazinImageWrapper = styled.div`
+const MagazinImageWrapper = styled(motion.div)`
   margin: 0 auto;
   margin-top: 1.5rem;
 `
@@ -110,7 +110,7 @@ const PostImage = styled.div`
   position: relative;
 `
 
-const PostText = styled.div`
+const PostText = styled(motion.div)`
   // flex: 75%;
   position: absolute;
   top: 0;
@@ -121,13 +121,13 @@ const PostText = styled.div`
     font-size: 2.5rem;  
     margin-bottom: 0;
     background-color: darkblue;
-    font-family: Lato, sans;
+    font-family: Montserrat,sans-serif;
   }
 
   p{
     color: white;
     background-color: darkblue;
-    
+    font-family: Montserrat,sans-serif;
   }
   }
 `
@@ -135,7 +135,18 @@ const PostText = styled.div`
 const AllProjLinkWrapper = styled.div``
 
 const AllProjLink = styled.div`
-  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+
+  a {
+    font-size: 1.5rem;
+    font-family: Roboto, sans-serif;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-left: 2rem;
+  }
 `
 
 const BlogIndex = ({ data, location }) => {
@@ -185,8 +196,7 @@ const BlogIndex = ({ data, location }) => {
             y: [-950, -700, -500, 0],
             opacity: [0, 0, 0, 1],
           }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 1.2, ease: "linear" }}
+          transition={{ duration: 2, ease: "linear" }}
           layoutTransition
         >
           {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
@@ -204,8 +214,7 @@ const BlogIndex = ({ data, location }) => {
             y: [950, 700, 500, 0],
             opacity: [0, 0, 0, 1],
           }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 1.2, ease: "linear" }}
+          transition={{ duration: 2, ease: "linear" }}
         >
           {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
             {heroTitle}
@@ -226,13 +235,14 @@ const BlogIndex = ({ data, location }) => {
       <SectionMagazinWrapper>
         <MagazinTextWrapper>
           <h2>Фото для обложки журнала #ПР92</h2>
-          <span> Кафе «Космос» на ВДНХ</span>
         </MagazinTextWrapper>
-        <MagazinImageWrapper>
+        <MagazinImageWrapper whileHover={{ scale: 1.1 }}>
           <img src={Cover} style={{ height: "42rem" }}></img>
         </MagazinImageWrapper>
       </SectionMagazinWrapper>
-
+      <AllProjLink>
+        <Link to="/projects">Все работы</Link>
+      </AllProjLink>
       <SectionWrapper>
         {posts.map(({ node }) => {
           const title = node.title || node.slug
@@ -246,7 +256,10 @@ const BlogIndex = ({ data, location }) => {
                   style={{ height: "100%", position: "relative" }}
                 />
               </PostImage>
-              <PostText>
+              <PostText
+                animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
+                transition={{ duration: 2, ease: "linear" }}
+              >
                 <h3>
                   <Link style={{ boxShadow: `none` }} to={node.slug}>
                     {title}
@@ -261,11 +274,6 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </SectionWrapper>
-      <AllProjLinkWrapper>
-        <AllProjLink>
-          <Link to="/projects">Все работы</Link>
-        </AllProjLink>
-      </AllProjLinkWrapper>
     </Layout>
   )
 }

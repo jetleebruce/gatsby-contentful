@@ -30,11 +30,11 @@ const HeaderTextWrapper = styled.div`
 
   p {
     align-items: center;
+    font-family: Montserrat, sans-serif;
   }
 `
 
 const GalleryWrapper = styled.div`
-
   max-width: 90%;
   margin: 0 auto;
   margin-left: auto;
@@ -45,7 +45,6 @@ const GalleryWrapper = styled.div`
   }
 `
 const ImageGalleryWrapper = styled.div`
-
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
@@ -63,42 +62,38 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
       <SEO title={post.title} description={post.subtitle} />
       <PostWrapper>
         <article>
-          <header>
-            <HeaderWrapper>
-              <HeaderTextWrapper>
-                <h1>{post.title}</h1>
-                <section
-                  dangerouslySetInnerHTML={{
-                    __html: post.content.childContentfulRichText.html,
-                  }}
-                />
-              </HeaderTextWrapper>
-              <ImageHeaderWrapper>
-                <Img fluid={post.image.fluid} />
-              </ImageHeaderWrapper>
-            </HeaderWrapper>
-          </header>
-          <GalleryWrapper>
-            
-              <div>
-                {post.pics.map((img, i) => {
-                  console.log(img)
+          <HeaderWrapper>
+            <HeaderTextWrapper>
+              <h1>{post.title}</h1>
+              <section
+                dangerouslySetInnerHTML={{
+                  __html: post.content.childContentfulRichText.html,
+                }}
+              />
+            </HeaderTextWrapper>
+            <ImageHeaderWrapper>
+              <Img fluid={post.image.fluid} />
+            </ImageHeaderWrapper>
+          </HeaderWrapper>
 
-                  return (
-                    <ImageGalleryWrapper style={{ marginBottom: "15px" }}>
+          <GalleryWrapper>
+            <div>
+              {post.pics.map((img, i) => {
+                console.log(img)
+
+                return (
+                  <ImageGalleryWrapper style={{ marginBottom: "15px" }}>
                     <Img
                       key={i}
                       fluid={img.fluid}
                       alt={img.title}
                       objectFit="cover"
                       objectPosition="50% 50%"
-                      
-                      />
-                    </ImageGalleryWrapper>
-                  )
-                })}
-              </div>
-            
+                    />
+                  </ImageGalleryWrapper>
+                )
+              })}
+            </div>
           </GalleryWrapper>
 
           <hr
