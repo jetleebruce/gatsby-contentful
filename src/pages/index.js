@@ -14,14 +14,22 @@ const HeroContainer = styled.div`
   width: 100%;
   height: 100vh;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  // grid-column-gap: 1px;
-  grid-row-gap: 0px;
+  display: flex;
+
+  // grid-template-columns: 1.5fr 1fr 1fr;
+  // grid-template-rows: 1fr;
+  // // grid-column-gap: 1px;
+  // // grid-row-gap: 0px;
+  // grid-auto-flow: row dense
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `
 
 const HeroMainSection = styled(motion.div)`
+  width: 50%;
   background-color: #4b565d;
   display: flex;
   flex-direction: column;
@@ -40,11 +48,33 @@ const HeroMainSection = styled(motion.div)`
     font-weight: 300;
     margin-bottom: 1rem;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 50%;
+  }
 `
 
-const HeroLeftSection = styled(motion.div)``
+const LeftRightWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 50%;
 
-const HeroRightSection = styled(motion.div)``
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+  }
+`
+
+const HeroLeftSection = styled(motion.div)`
+  width: 50%;
+`
+
+const HeroRightSection = styled(motion.div)`
+  width: 50%;
+`
 
 // Section with Magazin cover
 
@@ -191,45 +221,47 @@ const BlogIndex = ({ data, location }) => {
             </Link>
           </motion.div>
         </HeroMainSection>
-        <HeroLeftSection
-          animate={{
-            y: [-950, -700, -500, 0],
-            opacity: [0, 0, 0, 1],
-          }}
-          transition={{ duration: 2, ease: "linear" }}
-          layoutTransition
-        >
-          {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
-            {heroTitle}
-          </p> */}
-          <Img
-            fluid={heroImg}
-            objectFit="cover"
-            objectPosition="50% 50%"
-            style={{ height: "100%", position: "relative" }}
-          ></Img>
-        </HeroLeftSection>
-        <HeroRightSection
-          animate={{
-            y: [950, 700, 500, 0],
-            opacity: [0, 0, 0, 1],
-          }}
-          transition={{ duration: 2, ease: "linear" }}
-        >
-          {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
-            {heroTitle}
-          </p> */}
-          <Img
-            fluid={heroImgRight}
-            objectFit="cover"
-            objectPosition="50% 50%"
-            style={{
-              height: "100%",
-              position: "relative",
-              overflowX: "hidden",
+        <LeftRightWrapper>
+          <HeroLeftSection
+            animate={{
+              y: [-950, -700, -500, 0],
+              opacity: [0, 0, 0, 1],
             }}
-          ></Img>
-        </HeroRightSection>
+            transition={{ duration: 2, ease: "linear" }}
+            layoutTransition
+          >
+            {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
+            {heroTitle}
+          </p> */}
+            <Img
+              fluid={heroImg}
+              objectFit="cover"
+              objectPosition="50% 50%"
+              style={{ height: "100%", position: "relative" }}
+            ></Img>
+          </HeroLeftSection>
+          <HeroRightSection
+            animate={{
+              y: [950, 700, 500, 0],
+              opacity: [0, 0, 0, 1],
+            }}
+            transition={{ duration: 2, ease: "linear" }}
+          >
+            {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
+            {heroTitle}
+          </p> */}
+            <Img
+              fluid={heroImgRight}
+              objectFit="cover"
+              objectPosition="50% 50%"
+              style={{
+                height: "100%",
+                position: "relative",
+                overflowX: "hidden",
+              }}
+            ></Img>
+          </HeroRightSection>
+        </LeftRightWrapper>
       </HeroContainer>
 
       <SectionMagazinWrapper>
