@@ -49,7 +49,23 @@ const HeroMainSection = styled(motion.div)`
     margin-bottom: 1rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 575.98px) {
+    width: 100%;
+    height: 50%;
+    margin: 0 auto;
+    justify-content: center;
+
+    h1 {
+      padding-top: 2rem;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 767.98px) {
     width: 100%;
     height: 50%;
   }
@@ -60,7 +76,7 @@ const LeftRightWrapper = styled.div`
   flex-direction: row;
   width: 50%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767.98px) {
     display: flex;
     flex-direction: row;
     width: 100%;
