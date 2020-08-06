@@ -22,8 +22,12 @@ const HeroContainer = styled.div`
   // // grid-row-gap: 0px;
   // grid-auto-flow: row dense
 
-  @media (max-width: 768px) {
+  @media (max-width: 767.98px) {
     flex-direction: column;
+    width: 100%;
+  }
+
+  @media (max-width: 575.98px) {
     width: 100%;
   }
 `
@@ -130,12 +134,25 @@ const MagazinTextWrapper = styled.div`
 const SectionWrapper = styled.div`
   margin: : 0 auto;
   padding: 2rem 2rem;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   // grid-column-gap: 1px;
   grid-row-gap: 0px;
+
+@media (max-width: 575.98px){
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+@media (max-width: 767.98px){
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+@media (max-width: 991.98px){
+  
+}
 `
 
 const PostWrapper = styled.div`
@@ -170,10 +187,26 @@ const PostText = styled(motion.div)`
     font-family: Montserrat,sans-serif;
   }
 
-  p{
+  p {
     color: white;
     background-color: darkblue;
     font-family: Montserrat,sans-serif;
+  }
+
+  @media (max-width: 575.98px){
+    margin: 0.5rem;
+
+    h3{
+      margin-bottom: 0.5rem;
+    }
+    
+h3 a {
+  font-size: 1.2rem;
+}
+
+p{
+  font-size: 0.8rem;
+}
   }
   }
 `
@@ -280,17 +313,6 @@ const BlogIndex = ({ data, location }) => {
         </LeftRightWrapper>
       </HeroContainer>
 
-      <SectionMagazinWrapper>
-        <MagazinTextWrapper>
-          <h2>Фото для обложки журнала #ПР92</h2>
-        </MagazinTextWrapper>
-        <MagazinImageWrapper whileHover={{ scale: 1.1 }}>
-          <img src={Cover} style={{ height: "42rem" }}></img>
-        </MagazinImageWrapper>
-      </SectionMagazinWrapper>
-      <AllProjLink>
-        <Link to="/projects">Все работы</Link>
-      </AllProjLink>
       <SectionWrapper>
         {posts.map(({ node }) => {
           const title = node.title || node.slug
@@ -322,7 +344,20 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </SectionWrapper>
-      <SectionWrapper>
+
+      <AllProjLink>
+        <Link to="/projects">Все работы</Link>
+      </AllProjLink>
+
+      <SectionMagazinWrapper>
+        <MagazinTextWrapper>
+          <h2>Фото для обложки журнала #ПР92</h2>
+        </MagazinTextWrapper>
+        <MagazinImageWrapper whileHover={{ scale: 1.1 }}>
+          <img src={Cover} style={{ height: "42rem" }}></img>
+        </MagazinImageWrapper>
+      </SectionMagazinWrapper>
+      {/* <SectionWrapper>
         <form name="contact" netlify>
           <p>
             <label>
@@ -338,7 +373,7 @@ const BlogIndex = ({ data, location }) => {
             <button type="submit">Send</button>
           </p>
         </form>
-      </SectionWrapper>
+      </SectionWrapper> */}
     </Layout>
   )
 }
