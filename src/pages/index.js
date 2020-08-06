@@ -15,31 +15,34 @@ const HeroContainer = styled.div`
   height: 100vh;
   margin: 0 auto;
   display: flex;
+  // flex-direction: row;
 
   // grid-template-columns: 1.5fr 1fr 1fr;
   // grid-template-rows: 1fr;
   // // grid-column-gap: 1px;
   // // grid-row-gap: 0px;
   // grid-auto-flow: row dense
-  @media (max-width: 1199.98px) {
+
+  @media (max-width: 575.98px) {
     width: 100%;
     height: 100vh;
-    flex-direction: row;
+    flex-direction: column;
   }
-  @media (max-width: 991.98px) {
-    flex-direction: row;
-    width: 100%;
-    height: 100vh;
-  }
+
   @media (max-width: 767.98px) {
     flex-direction: column;
     width: 100%;
     height: 100vh;
   }
-
-  @media (max-width: 575.98px) {
+  @media (max-width: 991.98px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vh;
+  }
+  @media (max-width: 1199.98px) {
     width: 100%;
     height: 100vh;
+    flex-direction: row;
   }
 `
 
@@ -87,7 +90,7 @@ const HeroMainSection = styled(motion.div)`
 
   @media (max-width: 991.98px) {
     width: 100%;
-    
+    height: 50%;
   }
 
   @media (max-width: 1199.98px) {
@@ -109,13 +112,13 @@ const LeftRightWrapper = styled.div`
   @media (max-width: 991.98px) {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 100vh;
+    // width: 100%;
+  height: 50vh;
   }
 
   @media (max-width: 1199.98px) {
     width: 100%;
-    // height: 70vh;
+    //height: 70vh;
   }
 `
 
