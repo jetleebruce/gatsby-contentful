@@ -21,14 +21,25 @@ const HeroContainer = styled.div`
   // // grid-column-gap: 1px;
   // // grid-row-gap: 0px;
   // grid-auto-flow: row dense
-
+  @media (max-width: 1199.98px) {
+    width: 100%;
+    height: 100vh;
+    flex-direction: row;
+  }
+  @media (max-width: 991.98px) {
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+  }
   @media (max-width: 767.98px) {
     flex-direction: column;
     width: 100%;
+    height: 100vh;
   }
 
   @media (max-width: 575.98px) {
     width: 100%;
+    height: 100vh;
   }
 `
 
@@ -73,6 +84,15 @@ const HeroMainSection = styled(motion.div)`
     width: 100%;
     height: 50%;
   }
+
+  @media (max-width: 991.98px) {
+    width: 100%;
+    
+  }
+
+  @media (max-width: 1199.98px) {
+    width: 100%;
+  }
 `
 
 const LeftRightWrapper = styled.div`
@@ -85,6 +105,17 @@ const LeftRightWrapper = styled.div`
     flex-direction: row;
     width: 100%;
     height: 50%;
+  }
+  @media (max-width: 991.98px) {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+  }
+
+  @media (max-width: 1199.98px) {
+    width: 100%;
+    // height: 70vh;
   }
 `
 
@@ -140,6 +171,11 @@ const SectionWrapper = styled.div`
   // grid-column-gap: 1px;
   grid-row-gap: 0px;
 
+  @media (max-width: 991.98px){
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
 @media (max-width: 575.98px){
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -151,7 +187,8 @@ const SectionWrapper = styled.div`
 }
 
 @media (max-width: 991.98px){
-  
+  grid-template-columns: 1fr  ;
+  grid-template-rows: 1fr;
 }
 `
 
