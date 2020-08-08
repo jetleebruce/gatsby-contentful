@@ -17,6 +17,69 @@ const HeaderWrapper = styled.div`
   margin-top: 5rem;
   margin-bottom: 5rem;
   padding: 3.5rem;
+
+  @media (max-width: 991.98px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  @media (max-width: 575.98px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  @media (max-width: 767.98px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+`
+const Post = styled.div`
+  position: relative;
+  margin-bottom: 2rem;
+`
+
+const PostImage = styled.div`
+  // flex: 25%;
+  margin-right: 1rem;
+  // width: 25rem;
+  position: relative;
+`
+const PostText = styled(motion.div)`
+  // flex: 75%;
+  position: absolute;
+  top: 0;
+  margin: 2.5rem;
+ 
+  h3 a {
+    color: white;
+    font-size: 2.5rem;  
+    margin-bottom: 0;
+    background-color: darkblue;
+    font-family: Montserrat,sans-serif;
+  }
+
+  p {
+    color: white;
+    background-color: darkblue;
+    font-family: Montserrat,sans-serif;
+  }
+
+  @media (max-width: 575.98px){
+    margin: 0.5rem;
+
+    h3{
+      margin-bottom: 0.5rem;
+    }
+    
+h3 a {
+  font-size: 1.2rem;
+}
+
+p{
+  font-size: 0.8rem;
+}
+  }
+  }
 `
 
 const Projects = ({ data, location }) => {
@@ -28,9 +91,22 @@ const Projects = ({ data, location }) => {
         {projects.map(({ node }) => {
           const title = node.title || node.slug
           return (
-            <div key={node.slug}>
-              <Img fluid={node.image.fluid} />
-            </div>
+            <Post key={node.slug}>
+              <PostImage>
+                <Img fluid={node.image.fluid} />
+              </PostImage>
+              <PostText>
+                <h3>
+                  <Link style={{ boxShadow: `none` }} to={node.slug}>
+                    {title}
+                  </Link>
+                </h3>
+
+                <section>
+                  <p>{node.subtitle}</p>
+                </section>
+              </PostText>
+            </Post>
           )
         })}
       </HeaderWrapper>
