@@ -1,11 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+// import { rhythm } from "../utils/typography"
 
 const PostWrapper = styled.div`
   margin: 0 auto;
@@ -20,6 +20,24 @@ const HeaderWrapper = styled.div`
   margin-top: 5rem;
   margin-bottom: 5rem;
   padding: 3.5rem;
+
+  @media (max-width: 575.98px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 1px;
+  }
+
+  @media (max-width: 767.98px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 1px;
+  }
+
+  // @media (max-width: 991.98px) {
+  //   grid-template-columns: 1fr 1fr;
+  //   grid-template-rows: 1fr;
+  //   grid-column-gap: 1px;
+  // }
 `
 
 const HeaderTextWrapper = styled.div`
@@ -33,6 +51,7 @@ const HeaderTextWrapper = styled.div`
     font-family: Montserrat, sans-serif;
   }
 `
+const ImageHeaderWrapper = styled.div``
 
 const GalleryWrapper = styled.div`
   max-width: 90%;
@@ -50,60 +69,56 @@ const ImageGalleryWrapper = styled.div`
   margin-right: auto;
   max-width: 90%;
 `
-const ImageHeaderWrapper = styled.div``
 
 const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulPost
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+  // const { previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.title} description={post.subtitle} />
       <PostWrapper>
-        <article>
-          <HeaderWrapper>
-            <HeaderTextWrapper>
-              <h1>{post.title}</h1>
-              <section
-                dangerouslySetInnerHTML={{
-                  __html: post.content.childContentfulRichText.html,
-                }}
-              />
-            </HeaderTextWrapper>
-            <ImageHeaderWrapper>
-              <Img fluid={post.image.fluid} />
-            </ImageHeaderWrapper>
-          </HeaderWrapper>
+        <HeaderWrapper>
+          <HeaderTextWrapper>
+            <h1>{post.title}</h1>
+            <section
+              dangerouslySetInnerHTML={{
+                __html: post.content.childContentfulRichText.html,
+              }}
+            />
+          </HeaderTextWrapper>
+          <ImageHeaderWrapper>
+            <Img fluid={post.image.fluid} />
+          </ImageHeaderWrapper>
+        </HeaderWrapper>
 
-          <GalleryWrapper>
-            <div>
-              {post.pics.map((img, i) => {
-                console.log(img)
-
-                return (
-                  <ImageGalleryWrapper style={{ marginBottom: "15px" }}>
-                    <Img
-                      key={i}
-                      fluid={img.fluid}
-                      alt={img.title}
-                      objectFit="cover"
-                      objectPosition="50% 50%"
-                    />
-                  </ImageGalleryWrapper>
-                )
-              })}
-            </div>
-          </GalleryWrapper>
-
+        <GalleryWrapper>
+          <div>
+            {post.pics.map((img, i) => {
+              return (
+                <ImageGalleryWrapper style={{ marginBottom: "15px" }}>
+                  <Img
+                    key={i}
+                    fluid={img.fluid}
+                    alt={img.title}
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                  />
+                </ImageGalleryWrapper>
+              )
+            })}
+          </div>
+        </GalleryWrapper>
+        {/* 
           <hr
             style={{
               marginBottom: rhythm(1),
             }}
           />
-          <footer>{/* <Bio /> */}</footer>
-        </article>
+          // <>{/* <Bio /> */}
 
+        {/* 
         <nav>
           <ul
             style={{
@@ -129,7 +144,7 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
               )}
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </PostWrapper>
     </Layout>
   )

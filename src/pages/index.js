@@ -189,10 +189,10 @@ const SectionWrapper = styled.div`
   grid-template-rows: 1fr;
 }
 
-@media (max-width: 991.98px){
-  grid-template-columns: 1fr  ;
-  grid-template-rows: 1fr;
-}
+// @media (max-width: 1199.98px){
+//   grid-template-columns: 1fr 1fr ;
+//   grid-template-rows: 1fr;
+// }
 `
 
 const PostWrapper = styled.div`
