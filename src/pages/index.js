@@ -113,7 +113,7 @@ const LeftRightWrapper = styled.div`
     display: flex;
     flex-direction: row;
     // width: 100%;
-  height: 50vh;
+    height: 50vh;
   }
 
   @media (max-width: 1199.98px) {
@@ -138,11 +138,26 @@ padding: 5rem 5rem;
 margin-top: 1.5rem;
 display: flex;
 flex-direction: column;
+
+@media (max-width: 575.98px) {
+    margin-top: 0.5rem;
+    padding: 2rem 2rem;
+  }
 `
 
 const MagazinImageWrapper = styled(motion.div)`
   margin: 0 auto;
   margin-top: 1.5rem;
+
+  img {
+    height: 38rem;
+  }
+
+  @media (max-width: 575.98px) {
+    img {
+      height: 28rem;
+    }
+  }
 `
 
 const MagazinTextWrapper = styled.div`
@@ -160,6 +175,12 @@ const MagazinTextWrapper = styled.div`
     font-weight: 700 bold;
     text-transform: uppercase;
     font-size: 2.5rem;
+  }
+
+  @media (max-width: 575.98px) {
+    h2 {
+      font-size: 1.5rem;
+    }
   }
 `
 
@@ -265,6 +286,12 @@ const AllProjLink = styled.div`
     text-transform: uppercase;
     font-weight: 800;
     margin-left: 2rem;
+  }
+
+  @media (max-width: 575.98px) {
+    a {
+      font-size: 1rem;
+    }
   }
 `
 
@@ -394,7 +421,7 @@ const BlogIndex = ({ data, location }) => {
           <h2>Фото для обложки журнала #ПР92</h2>
         </MagazinTextWrapper>
         <MagazinImageWrapper whileHover={{ scale: 1.1 }}>
-          <img src={Cover} style={{ height: "42rem" }}></img>
+          <img src={Cover}></img>
         </MagazinImageWrapper>
       </SectionMagazinWrapper>
       {/* <SectionWrapper>
@@ -427,7 +454,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPost {
+    allContentfulPost(limit: 4) {
       edges {
         node {
           id

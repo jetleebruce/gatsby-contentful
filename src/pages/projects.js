@@ -83,12 +83,12 @@ p{
 `
 
 const Projects = ({ data, location }) => {
-  const projects = data.allContentfulPost.edges
+  
 
   return (
     <ProjectWrapper>
       <HeaderWrapper>
-        {projects.map(({ node }) => {
+        {data.allContentfulPost.edges.map(({ node }) => {
           const title = node.title || node.slug
           return (
             <Post key={node.slug}>
@@ -97,7 +97,7 @@ const Projects = ({ data, location }) => {
               </PostImage>
               <PostText>
                 <h3>
-                  <Link style={{ boxShadow: `none` }} to={node.slug}>
+                  <Link style={{ boxShadow: `none` }} to="/{node.slug}">
                     {title}
                   </Link>
                 </h3>
@@ -117,20 +117,21 @@ const Projects = ({ data, location }) => {
 export default Projects
 
 export const pageQuery = graphql`
-  query {
-    allContentfulPost {
-      edges {
-        node {
-          id
-          title
-          subtitle
-          image {
-            fluid {
-              ...GatsbyContentfulFluid
-            }
-          }
-        }
-      }
-    }
-  }
-`
+         query {
+           allContentfulPost(limit: 4) {
+             edges {
+               node {
+                 id
+                 title
+                 subtitle
+                 image {
+                   fluid {
+                     ...GatsbyContentfulFluid
+                   }
+                 }
+                 slug
+               }
+             }
+           }
+         }
+       `
