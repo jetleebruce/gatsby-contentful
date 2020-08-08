@@ -90,6 +90,7 @@ const Projects = ({ data, location }) => {
       <HeaderWrapper>
         {data.allContentfulPost.edges.map(({ node }) => {
           const title = node.title || node.slug
+          console.log(node.slug)
           return (
             <Post key={node.slug}>
               <PostImage>
@@ -97,7 +98,7 @@ const Projects = ({ data, location }) => {
               </PostImage>
               <PostText>
                 <h3>
-                  <Link style={{ boxShadow: `none` }} to="/{node.slug}">
+                  <Link style={{ boxShadow: `none` }} to={`/${node.slug}`}>
                     {title}
                   </Link>
                 </h3>
