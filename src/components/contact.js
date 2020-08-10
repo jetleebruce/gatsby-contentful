@@ -27,7 +27,7 @@ const HeaderWrapper = styled.div`
   }
 `
 
-const FormWrapper = styled.div`
+const FormSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -41,22 +41,32 @@ const FormWrapper = styled.div`
     font-family: "Roboto", sans-serif;
   }
 `
+
+const FormWrapper = styled.div`
+  margin: 0 auto;
+  margin-bottom: 3rem;
+`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 2rem 18rem;
-  padding: 5rem 12rem;
-  border-shadow: 6px;
-  border: 1px solid white;
+  width: 40rem;
+  // margin: 2rem 18rem;
+  padding: 5rem 5rem;
+  box-shadow: -10px -10px 30px 4px rgba(0, 0, 0, 0.1),
+    10px 10px 30px 4px rgba(45, 78, 255, 0.15);
 
   @media (max-width: 575.98px) {
     // margin-right: 2rem;
     // margin-left: 2rem;
     // padding: 3rem 3rem;
+    width: 20rem !important;
+    margin: 0 !important;
+    padding: 2rem !important;
   }
   @media (max-width: 767.98px) {
     // margin: 2rem 6rem;
     // padding: 3rem 3rem;
+    width: 25rem;
   }
   @media (max-width: 991.98px) {
     padding: 3rem 3rem;
@@ -115,7 +125,7 @@ const FormButton = styled.button`
   cursor: pointer;
 
   @media (max-width: 575.98px) {
-    min-width: 190px;
+    max-width: 190px;
   }
 `
 
@@ -157,45 +167,47 @@ const Contact = () => {
   }
   return (
     <>
-      <FormWrapper>
+      <FormSectionWrapper>
         <HeaderWrapper>
           <h3>для связи</h3>
         </HeaderWrapper>
         <p>vailiy@gmail.com</p>
-        <Form
-          onSubmit={handleSubmit}
-          name="contact"
-          method="post"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
-          <FormInput type="hidden" name="form-name" value="contact" />
-          <FormLabel htmlFor="name">Имя</FormLabel>
-          <FormInput
-            id="name"
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={formState.name}
-            placeholder="Name"
-          />
-          <FormLabel htmlFor="email">Email</FormLabel>
-          <FormInput
-            id="email"
-            type="email"
-            name="email"
-            onChange={handleChange}
-            value={formState.email}
-            placeholder="Email"
-          />
-          <FormButtonWrapper>
-            <FormButton type="submit">Отправить</FormButton>
-          </FormButtonWrapper>
-        </Form>
+        <FormWrapper>
+          <Form
+            onSubmit={handleSubmit}
+            name="contact"
+            method="post"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <FormInput type="hidden" name="form-name" value="contact" />
+            <FormLabel htmlFor="name">Имя</FormLabel>
+            <FormInput
+              id="name"
+              type="text"
+              name="name"
+              onChange={handleChange}
+              value={formState.name}
+              placeholder="Name"
+            />
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <FormInput
+              id="email"
+              type="email"
+              name="email"
+              onChange={handleChange}
+              value={formState.email}
+              placeholder="Email"
+            />
+            <FormButtonWrapper>
+              <FormButton type="submit">Отправить</FormButton>
+            </FormButtonWrapper>
+          </Form>
+        </FormWrapper>
         {/* <FormText>
           <h3>Напишите письмо, хоть две строчки всего</h3>
         </FormText> */}
-      </FormWrapper>
+      </FormSectionWrapper>
     </>
   )
 }

@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
 import Contact from "../components/contact"
+import Footer from "../components/footer"
 import SEO from "../components/seo"
 
 import Behance from "../images/behance.png"
@@ -437,8 +438,8 @@ const BlogIndex = ({ data, location }) => {
           <img src={Cover}></img>
         </MagazinImageWrapper>
       </SectionMagazinWrapper>
-      
       <Contact />
+      <Footer />
     </Layout>
   )
 }
