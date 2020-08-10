@@ -5,37 +5,118 @@ import { motion } from "framer-motion"
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  align-item: center;
 
   h3 {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     font-size: 2.5rem;
+    color: white;
+  }
+
+  @media (max-width: 575.98px) {
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 767.98px) {
+  }
+  @media (max-width: 991.98px) {
+  }
+  @media (max-width: 1199.98px) {
   }
 `
 
 const FormWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 0 auto;
+  background: #141e30;
+
+  p {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: "Roboto", sans-serif;
+  }
 `
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 6rem 4rem;
-  width: 50%;
+  margin: 2rem 18rem;
+  padding: 5rem 12rem;
+  border-shadow: 6px;
+  border: 1px solid white;
+
+  @media (max-width: 575.98px) {
+    // margin-right: 2rem;
+    // margin-left: 2rem;
+    // padding: 3rem 3rem;
+  }
+  @media (max-width: 767.98px) {
+    // margin: 2rem 6rem;
+    // padding: 3rem 3rem;
+  }
+  @media (max-width: 991.98px) {
+    padding: 3rem 3rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+  @media (max-width: 1199.98px) {
+    // padding: 3rem 3rem;
+    margin: 2rem 2rem;
+  }
 `
 const FormText = styled.div`
-  width: 50%;
+  dispaly: flex;
+  justify-content: center;
+
+  h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    margin-top: 8.5rem;
+  }
 `
 const FormInput = styled.input`
   height: 3rem;
+  border-radius: 12px;
+  border: none;
   margin-bottom: 1rem;
+
+  @media (max-width: 575.98px) {
+    height: 2.5rem;
+    border-radius: 10px;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `
-const FormButtonWrapper = styled.div``
+const FormButtonWrapper = styled.div`
+  margin-top: 1rem;
+`
 
 const FormButton = styled.button`
-  margin-top: 1rem;
+  background: #141e30;
+  height: 50px;
+  min-width: 150px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  border: 1px solid white;
+  cursor: pointer;
+
+  @media (max-width: 575.98px) {
+    min-width: 190px;
+  }
 `
 
 const FormLabel = styled.label`
@@ -76,16 +157,11 @@ const Contact = () => {
   }
   return (
     <>
-      <HeaderWrapper>
-        <h3>Связь</h3>
-      </HeaderWrapper>
-
-      <FormWrapper
-        style={{
-          backgroundColor: `#141414`,
-          // margin: `0 auto 0 auto`,
-        }}
-      >
+      <FormWrapper>
+        <HeaderWrapper>
+          <h3>для связи</h3>
+        </HeaderWrapper>
+        <p>vailiy@gmail.com</p>
         <Form
           onSubmit={handleSubmit}
           name="contact"
@@ -101,7 +177,7 @@ const Contact = () => {
             name="name"
             onChange={handleChange}
             value={formState.name}
-            placeholder="Представьтесь, пожалуйста!"
+            placeholder="Name"
           />
           <FormLabel htmlFor="email">Email</FormLabel>
           <FormInput
@@ -110,15 +186,15 @@ const Contact = () => {
             name="email"
             onChange={handleChange}
             value={formState.email}
-            placeholder="Ваш email"
+            placeholder="Email"
           />
           <FormButtonWrapper>
             <FormButton type="submit">Отправить</FormButton>
           </FormButtonWrapper>
         </Form>
-        <FormText>
-          <h3>Hello world</h3>
-        </FormText>
+        {/* <FormText>
+          <h3>Напишите письмо, хоть две строчки всего</h3>
+        </FormText> */}
       </FormWrapper>
     </>
   )
