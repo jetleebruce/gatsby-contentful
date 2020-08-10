@@ -341,13 +341,13 @@ const BlogIndex = ({ data, location }) => {
               <img
                 src={Behance}
                 style={{ width: "2.5rem", textColor: "white" }}
-              ></img>
+              />
             </a>
             <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
               <img
                 src={Telegram}
                 style={{ width: "2.5rem", textColor: "white" }}
-              ></img>
+              />
             </a>
           </motion.div>
         </HeroMainSection>
