@@ -5,10 +5,12 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
+import Contact from "../components/contact"
 import SEO from "../components/seo"
 
-import Behance from "../images/behance.svg"
+import Behance from "../images/behance.png"
 import Cover from "../images/space.jpg"
+import Telegram from "../images/telegram.png"
 
 const HeroContainer = styled.div`
   width: 100%;
@@ -48,7 +50,7 @@ const HeroContainer = styled.div`
 
 const HeroMainSection = styled(motion.div)`
   width: 50%;
-  background-color: #4b565d;
+  background: linear-gradient(#141e30, #28416f);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -241,7 +243,7 @@ const PostText = styled(motion.div)`
   margin: 2.5rem;
  
   h3 a {
-    color: white;
+    color: #f2f2f2;
     font-size: 2.5rem;  
     margin-bottom: 0;
     background-color: darkblue;
@@ -249,7 +251,7 @@ const PostText = styled(motion.div)`
   }
 
   p {
-    color: white;
+    color: #f2f2f2;;
     background-color: darkblue;
     font-family: Montserrat,sans-serif;
   }
@@ -327,14 +329,25 @@ const BlogIndex = ({ data, location }) => {
             animate={{ opacity: [0, 0, 0, 1] }}
             transition={{ duration: 4, ease: "linear" }}
             style={{
-              width: "90%",
               display: "flex",
               justifyContent: "center",
             }}
           >
-            <Link to="https://www.behance.net/vshrt">
-              <img src={Behance} style={{ width: "2rem" }}></img>
-            </Link>
+            <a
+              href="https://www.behance.net/vshrt"
+              style={{ boxShadow: "0 0 0 0", marginRight: "20px" }}
+            >
+              <img
+                src={Behance}
+                style={{ width: "2.5rem", textColor: "white" }}
+              ></img>
+            </a>
+            <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
+              <img
+                src={Telegram}
+                style={{ width: "2.5rem", textColor: "white" }}
+              ></img>
+            </a>
           </motion.div>
         </HeroMainSection>
         <LeftRightWrapper>
@@ -424,23 +437,8 @@ const BlogIndex = ({ data, location }) => {
           <img src={Cover}></img>
         </MagazinImageWrapper>
       </SectionMagazinWrapper>
-      {/* <SectionWrapper>
-        <form name="contact" netlify>
-          <p>
-            <label>
-              Name <input type="text" name="name" />
-            </label>
-          </p>
-          <p>
-            <label>
-              Email <input type="email" name="email" />
-            </label>
-          </p>
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </form>
-      </SectionWrapper> */}
+      
+      <Contact />
     </Layout>
   )
 }
