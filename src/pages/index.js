@@ -219,26 +219,18 @@ const SectionWrapper = styled.div`
 // }
 `
 
-const PostWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: 25rem;
-`
-
 const Post = styled.div`
   position: relative;
   margin-bottom: 2rem;
 `
 
 const PostImage = styled.div`
-  // flex: 25%;
   margin-right: 1rem;
-  // width: 25rem;
   position: relative;
 `
 
 const PostText = styled(motion.div)`
-  // flex: 75%;
+  
   position: absolute;
   top: 0;
   margin: 2.5rem;
