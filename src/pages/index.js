@@ -430,46 +430,43 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allContentfulPost(limit: 4) {
-      edges {
-        node {
-          id
-          title
-          subtitle
-          image {
-            fluid {
-              ...GatsbyContentfulFluid_withWebp
-            }
-          }
-          slug
-        }
-      }
-    }
-    contentfulHero {
-      heroTitle
-      heroImage {
-        title
-        fluid {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
-    }
-    contentfulNew {
-      pic {
-        title
-        fluid {
-          base64
-          tracedSVG
-          srcWebp
-          srcSetWebp
-        }
-      }
-    }
-  }
-`
+         query {
+           site {
+             siteMetadata {
+               title
+             }
+           }
+           allContentfulPost(limit: 4) {
+             edges {
+               node {
+                 id
+                 title
+                 subtitle
+                 image {
+                   fluid {
+                     ...GatsbyContentfulFluid_withWebp
+                   }
+                 }
+                 slug
+               }
+             }
+           }
+           contentfulHero {
+             heroTitle
+             heroImage {
+               title
+               fluid {
+                 ...GatsbyContentfulFluid_withWebp
+               }
+             }
+           }
+           contentfulNew {
+             pic {
+               title
+               fluid {
+                 ...GatsbyContentfulFluid_withWebp
+               }
+             }
+           }
+         }
+       `

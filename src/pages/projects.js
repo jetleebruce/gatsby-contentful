@@ -2,7 +2,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { motion } from "framer-motion"
 
 const ProjectWrapper = styled.div`
   margin: 0 auto;
@@ -44,7 +43,7 @@ const PostImage = styled.div`
   // width: 25rem;
   position: relative;
 `
-const PostText = styled(motion.div)`
+const PostText = styled.div`
   // flex: 75%;
   position: absolute;
   top: 0;
@@ -83,8 +82,6 @@ p{
 `
 
 const Projects = ({ data, location }) => {
-  
-
   return (
     <ProjectWrapper>
       <HeaderWrapper>
@@ -127,7 +124,7 @@ export const pageQuery = graphql`
                  subtitle
                  image {
                    fluid {
-                     ...GatsbyContentfulFluid
+                     ...GatsbyContentfulFluid_withWebp
                    }
                  }
                  slug
