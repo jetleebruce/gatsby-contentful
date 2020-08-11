@@ -59,7 +59,7 @@ const HeroMainSection = styled(motion.div)`
     color: #bcc0c2;
     margin: 0 auto;
     padding-bottom: 1rem;
-    font-family: "Lato", serif;
+    font-family: "Lato", sans-serif;
   }
   p {
     color: #bcc0c2;
@@ -235,7 +235,7 @@ const PostText = styled(motion.div)`
   top: 0;
   margin: 2.5rem;
  
-  h3 a {
+  h2 a {
     color: #f2f2f2;
     font-size: 2.5rem;  
     margin-bottom: 0;
@@ -252,11 +252,11 @@ const PostText = styled(motion.div)`
   @media (max-width: 575.98px){
     margin: 0.5rem;
 
-    h3{
+    h2{
       margin-bottom: 0.5rem;
     }
     
-h3 a {
+h2 a {
   font-size: 1.2rem;
 }
 
@@ -298,7 +298,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Vasiliy Khurtin" />
+      <SEO title="Василий Хуртин" />
       <HeroContainer>
         <HeroMainSection
           animate={{
@@ -310,7 +310,7 @@ const BlogIndex = ({ data, location }) => {
             animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
             transition={{ duration: 2, ease: "linear" }}
           >
-            Vasiliy Khurtin
+            Василий Хуртин
           </motion.h1>
           <motion.p
             animate={{ opacity: [0, 0, 0, 1] }}
@@ -403,11 +403,11 @@ const BlogIndex = ({ data, location }) => {
                 animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
                 transition={{ duration: 2, ease: "linear" }}
               >
-                <h3>
+                <h2>
                   <Link style={{ boxShadow: `none` }} to={node.slug}>
                     {title}
                   </Link>
-                </h3>
+                </h2>
 
                 <section>
                   <p>{node.subtitle}</p>

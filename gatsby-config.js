@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Modins Blog`,
+    title: `Василий Хуртин`,
     author: {
       name: `Serge Modin`,
       summary: `who love JAM stack`,
@@ -69,7 +69,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `standalone`,
-        icon: `src/images/assets/gatsby-icon.png`,
+        icon: `src/images/assets/icon.jpg`,
       },
     },
     `gatsby-plugin-react-helmet`,
