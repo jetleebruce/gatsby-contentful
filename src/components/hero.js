@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
 import styled from "styled-components"
 
 const HeroContainer = styled.div`
@@ -18,7 +17,6 @@ const HeroMainSection = styled.div`
   background-color: #4b565d;
   display: flex;
   flex-direction: column;
-  //   align-items: center;
   justify-content: center;
   h1 {
     color: #bcc0c2;

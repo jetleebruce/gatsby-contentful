@@ -267,8 +267,6 @@ p{
   }
 `
 
-const AllProjLinkWrapper = styled.div``
-
 const AllProjLink = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -333,12 +331,14 @@ const BlogIndex = ({ data, location }) => {
               <img
                 src={Behance}
                 style={{ width: "2.5rem", textColor: "white" }}
+                alt="behance"
               />
             </a>
             <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
               <img
                 src={Telegram}
                 style={{ width: "2.5rem", textColor: "white" }}
+                alt="telegram"
               />
             </a>
           </motion.div>
@@ -397,6 +397,7 @@ const BlogIndex = ({ data, location }) => {
                   objectFit="cover"
                   objectPosition="50% 50%"
                   style={{ height: "100%", position: "relative" }}
+                  alt={node.slug}
                 />
               </PostImage>
               <PostText
@@ -453,7 +454,7 @@ export const pageQuery = graphql`
           subtitle
           image {
             fluid {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           slug
@@ -465,7 +466,7 @@ export const pageQuery = graphql`
       heroImage {
         title
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }

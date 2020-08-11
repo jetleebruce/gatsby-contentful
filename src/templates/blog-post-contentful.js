@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import { rhythm } from "../utils/typography"
+
 
 const PostWrapper = styled.div`
   margin: 0 auto;
@@ -110,41 +110,6 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
             })}
           </div>
         </GalleryWrapper>
-        {/* 
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
-          // <>{/* <Bio /> */}
-
-        {/* 
-        <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.slug} rel="prev">
-                  ← {previous.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.slug} rel="next">
-                  {next.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav> */}
       </PostWrapper>
     </Layout>
   )
@@ -153,30 +118,30 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
 export default BlogPostContentfulTemplate
 
 export const pageQuery = graphql`
-  query ContentfulBlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    contentfulPost(slug: { eq: $slug }) {
-      title
-      subtitle
-      image {
-        fluid {
-          ...GatsbyContentfulFluid
-        }
-      }
-      pics {
-        fluid {
-          ...GatsbyContentfulFluid
-        }
-      }
-      content {
-        childContentfulRichText {
-          html
-        }
-      }
-    }
-  }
-`
+         query ContentfulBlogPostBySlug($slug: String!) {
+           site {
+             siteMetadata {
+               title
+             }
+           }
+           contentfulPost(slug: { eq: $slug }) {
+             title
+             subtitle
+             image {
+               fluid {
+                 ...GatsbyContentfulFluid_withWebp
+               }
+             }
+             pics {
+               fluid {
+                 ...GatsbyContentfulFluid_withWebp
+               }
+             }
+             content {
+               childContentfulRichText {
+                 html
+               }
+             }
+           }
+         }
+       `

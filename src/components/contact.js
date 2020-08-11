@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { motion } from "framer-motion"
+
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -76,18 +76,6 @@ const Form = styled.form`
   @media (max-width: 1199.98px) {
     // padding: 3rem 3rem;
     margin: 2rem 2rem;
-  }
-`
-const FormText = styled.div`
-  dispaly: flex;
-  justify-content: center;
-
-  h3 {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-family: "Roboto", sans-serif;
-    margin-top: 8.5rem;
   }
 `
 const FormInput = styled.input`
