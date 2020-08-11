@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { motion, AnimatePresence } from "framer-motion"
+
 
 import Layout from "../components/layout"
 import Contact from "../components/contact"
@@ -49,7 +49,7 @@ const HeroContainer = styled.div`
   }
 `
 
-const HeroMainSection = styled(motion.div)`
+const HeroMainSection = styled.div`
   width: 50%;
   background: linear-gradient(#141e30, #28416f);
   display: flex;
@@ -125,11 +125,11 @@ const LeftRightWrapper = styled.div`
   }
 `
 
-const HeroLeftSection = styled(motion.div)`
+const HeroLeftSection = styled.div`
   width: 50%;
 `
 
-const HeroRightSection = styled(motion.div)`
+const HeroRightSection = styled.div`
   width: 50%;
 `
 
@@ -148,7 +148,7 @@ flex-direction: column;
   }
 `
 
-const MagazinImageWrapper = styled(motion.div)`
+const MagazinImageWrapper = styled.div`
   margin: 0 auto;
   margin-top: 1.5rem;
 
@@ -229,7 +229,7 @@ const PostImage = styled.div`
   position: relative;
 `
 
-const PostText = styled(motion.div)`
+const PostText = styled.div`
   
   position: absolute;
   top: 0;
@@ -298,34 +298,24 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="Василий Хуртин" />
       <HeroContainer>
-        <HeroMainSection
-          animate={{
-            x: [-550, -300, -200, 0],
-            opacity: [0.1, 0.3, 0.5, 1],
-          }}
-        >
-          <AnimatePresence initial={false}>
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
-              transition={{ duration: 2, ease: "linear" }}
-              exit={{ opacity: 0 }}
+        <HeroMainSection>
+          
+            <h1
+             
             >
               Василий Хуртин
-            </motion.h1>
-          </AnimatePresence>
-          <AnimatePresence initial={false}>
-            <motion.p
-              animate={{ opacity: [0, 0, 0, 1] }}
-              transition={{ duration: 3, ease: "linear" }}
+            </h1>
+         
+          
+            <p
+              
             >
               Architecture / Food / Interior Photographer
-            </motion.p>
-          </AnimatePresence>
-          <AnimatePresence initial={false}>
-            <motion.div
-              animate={{ opacity: [0, 0, 0, 1] }}
-              transition={{ duration: 4, ease: "linear" }}
+            </p>
+        
+          
+            <div
+              
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -348,18 +338,13 @@ const BlogIndex = ({ data, location }) => {
                   alt={"telegram"}
                 />
               </a>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+         
         </HeroMainSection>
 
         <LeftRightWrapper>
           <HeroLeftSection
-            animate={{
-              y: [-950, -700, -500, 0],
-              opacity: [0, 0, 0, 1],
-            }}
-            transition={{ duration: 2, ease: "linear" }}
-            layoutTransition
+            
           >
             {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
             {heroTitle}
@@ -373,11 +358,7 @@ const BlogIndex = ({ data, location }) => {
             />
           </HeroLeftSection>
           <HeroRightSection
-            animate={{
-              y: [950, 700, 500, 0],
-              opacity: [0, 0, 0, 1],
-            }}
-            transition={{ duration: 2, ease: "linear" }}
+            
           >
             {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
             {heroTitle}
@@ -412,8 +393,6 @@ const BlogIndex = ({ data, location }) => {
                 />
               </PostImage>
               <PostText
-                animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
-                transition={{ duration: 2, ease: "linear" }}
               >
                 <h2>
                   <Link style={{ boxShadow: `none` }} to={node.slug}>
