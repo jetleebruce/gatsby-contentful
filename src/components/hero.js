@@ -34,7 +34,7 @@ const HeroRightSection = styled.div``
 
 
 
-const Hero = ({ data }) => {
+const Hero = () => {
   return (
     <HeroContainer>
       <HeroMainSection>
@@ -53,15 +53,3 @@ const Hero = ({ data }) => {
 
 export default Hero
 
-export const pageQuery = graphql`
-  query pageQuery {
-    allContentfulPost(filter: { node_locale: { eq: "en-US" } }) {
-      edges {
-        node {
-          title
-          slug
-        }
-      }
-    }
-  }
-`

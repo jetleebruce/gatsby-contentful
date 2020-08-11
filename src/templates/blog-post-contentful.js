@@ -133,6 +133,7 @@ export const pageQuery = graphql`
                }
              }
              pics {
+               title
                fluid {
                  ...GatsbyContentfulFluid_withWebp
                }

@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 import Layout from "../components/layout"
 import Contact from "../components/contact"
@@ -304,45 +304,54 @@ const BlogIndex = ({ data, location }) => {
             opacity: [0.1, 0.3, 0.5, 1],
           }}
         >
-          <motion.h1
-            animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
-            transition={{ duration: 2, ease: "linear" }}
-          >
-            Василий Хуртин
-          </motion.h1>
-          <motion.p
-            animate={{ opacity: [0, 0, 0, 1] }}
-            transition={{ duration: 3, ease: "linear" }}
-          >
-            Architecture / Food / Interior Photographer
-          </motion.p>
-          <motion.div
-            animate={{ opacity: [0, 0, 0, 1] }}
-            transition={{ duration: 4, ease: "linear" }}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <a
-              href="https://www.behance.net/vshrt"
-              style={{ boxShadow: "0 0 0 0", marginRight: "20px" }}
+          <AnimatePresence initial={false}>
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ scale: [0, 0, 1.1, 1], opacity: [0.1, 0.3, 0.5, 1] }}
+              transition={{ duration: 2, ease: "linear" }}
+              exit={{ opacity: 0 }}
             >
-              <img
-                src={Behance}
-                style={{ width: "2.5rem", textColor: "white" }}
-                alt="behance"
-              />
-            </a>
-            <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
-              <img
-                src={Telegram}
-                style={{ width: "2.5rem", textColor: "white" }}
-                alt="telegram"
-              />
-            </a>
-          </motion.div>
+              Василий Хуртин
+            </motion.h1>
+          </AnimatePresence>
+          <AnimatePresence initial={false}>
+            <motion.p
+              animate={{ opacity: [0, 0, 0, 1] }}
+              transition={{ duration: 3, ease: "linear" }}
+            >
+              Architecture / Food / Interior Photographer
+            </motion.p>
+          </AnimatePresence>
+          <AnimatePresence initial={false}>
+            <motion.div
+              animate={{ opacity: [0, 0, 0, 1] }}
+              transition={{ duration: 4, ease: "linear" }}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <a
+                href="https://www.behance.net/vshrt"
+                style={{ boxShadow: "0 0 0 0", marginRight: "20px" }}
+              >
+                <img
+                  src={Behance}
+                  style={{ width: "2.5rem", textColor: "white" }}
+                  alt={"behance"}
+                />
+              </a>
+              <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
+                <img
+                  src={Telegram}
+                  style={{ width: "2.5rem", textColor: "white" }}
+                  alt={"telegram"}
+                />
+              </a>
+            </motion.div>
+          </AnimatePresence>
         </HeroMainSection>
+
         <LeftRightWrapper>
           <HeroLeftSection
             animate={{
@@ -360,7 +369,8 @@ const BlogIndex = ({ data, location }) => {
               objectFit="cover"
               objectPosition="50% 50%"
               style={{ height: "100%", position: "relative" }}
-            ></Img>
+              alt={data.contentfulHero.heroImage.title}
+            />
           </HeroLeftSection>
           <HeroRightSection
             animate={{
@@ -381,7 +391,8 @@ const BlogIndex = ({ data, location }) => {
                 position: "relative",
                 overflowX: "hidden",
               }}
-            ></Img>
+              alt={data.contentfulNew.pic.title}
+            />
           </HeroRightSection>
         </LeftRightWrapper>
       </HeroContainer>
@@ -428,7 +439,7 @@ const BlogIndex = ({ data, location }) => {
           <h2>Фото для обложки журнала #ПР92</h2>
         </MagazinTextWrapper>
         <MagazinImageWrapper whileHover={{ scale: 1.1 }}>
-          <img src={Cover}></img>
+          <img alt={"Cover"} src={Cover} />
         </MagazinImageWrapper>
       </SectionMagazinWrapper>
       <Contact />

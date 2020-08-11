@@ -46,10 +46,10 @@ const Footer = () => {
             href="https://www.behance.net/vshrt"
             style={{ boxShadow: "0 0 0 0", marginRight: "20px" }}
           >
-            <img src={Behance} style={{ width: "2.5rem" }} />
+            <img src={Behance} style={{ width: "2.5rem" }} alt={"Behance"} />
           </a>
           <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
-            <img src={Telegram} style={{ width: "2.5rem" }} />
+            <img src={Telegram} style={{ width: "2.5rem" }} alt={"Telegram"} />
           </a>
         </SocialLinkWrapper>
       </SocialWrapperFooter>
