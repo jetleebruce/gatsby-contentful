@@ -443,7 +443,7 @@ export const pageQuery = graphql`
                  title
                  subtitle
                  image {
-                   fluid {
+                   fluid(maxWidth: 1000) {
                      ...GatsbyContentfulFluid_withWebp
                    }
                  }
@@ -455,7 +455,7 @@ export const pageQuery = graphql`
              heroTitle
              heroImage {
                title
-               fluid {
+               fluid(maxWidth: 1000) {
                  ...GatsbyContentfulFluid_withWebp
                }
              }
@@ -463,7 +463,7 @@ export const pageQuery = graphql`
            contentfulNew {
              pic {
                title
-               fluid {
+               fluid(maxWidth: 1000) {
                  ...GatsbyContentfulFluid_withWebp
                }
              }

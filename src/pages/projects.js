@@ -123,7 +123,7 @@ export const pageQuery = graphql`
                  title
                  subtitle
                  image {
-                   fluid {
+                   fluid(maxWidth: 1000) {
                      ...GatsbyContentfulFluid_withWebp
                    }
                  }
