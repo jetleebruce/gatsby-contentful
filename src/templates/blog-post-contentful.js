@@ -1,11 +1,10 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
 
 const PostWrapper = styled.div`
   margin: 0 auto;
@@ -67,7 +66,16 @@ const ImageGalleryWrapper = styled.div`
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 5px;
   max-width: 90%;
+`
+const Arrow = styled.div`
+  margin-top: 3%;
+
+  a {
+    margin: 3rem;
+    text-decoration: none;
+  }
 `
 
 const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
@@ -78,10 +86,13 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.title} description={post.subtitle} />
+      <Arrow>
+        <Link to="/"> &larr; Назад </Link>
+      </Arrow>
       <PostWrapper>
         <HeaderWrapper>
           <HeaderTextWrapper>
-            <h1>{post.title}</h1>
+            <h2>{post.title}</h2>
             <section
               dangerouslySetInnerHTML={{
                 __html: post.content.childContentfulRichText.html,
@@ -97,7 +108,7 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
           <div>
             {post.pics.map((img, i) => {
               return (
-                <ImageGalleryWrapper style={{ marginBottom: "15px" }}>
+                <ImageGalleryWrapper>
                   <Img
                     key={i}
                     fluid={img.fluid}
@@ -118,31 +129,31 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
 export default BlogPostContentfulTemplate
 
 export const pageQuery = graphql`
-         query ContentfulBlogPostBySlug($slug: String!) {
-           site {
-             siteMetadata {
-               title
-             }
-           }
-           contentfulPost(slug: { eq: $slug }) {
-             title
-             subtitle
-             image {
-               fluid {
-                 ...GatsbyContentfulFluid_withWebp
-               }
-             }
-             pics {
-               title
-               fluid {
-                 ...GatsbyContentfulFluid_withWebp
-               }
-             }
-             content {
-               childContentfulRichText {
-                 html
-               }
-             }
-           }
-         }
-       `
+  query ContentfulBlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    contentfulPost(slug: { eq: $slug }) {
+      title
+      subtitle
+      image {
+        fluid {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+      pics {
+        title
+        fluid {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+      content {
+        childContentfulRichText {
+          html
+        }
+      }
+    }
+  }
+`

@@ -3,9 +3,9 @@ import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
-
 import Layout from "../components/layout"
 import Contact from "../components/contact"
+import Hero from '../components/hero'
 import Footer from "../components/footer"
 import SEO from "../components/seo"
 
@@ -257,13 +257,25 @@ const PostText = styled.div`
     }
     
 h2 a {
-  font-size: 1.2rem;
+  font-size: 1.2rem !important;
 }
 
 p{
-  font-size: 0.8rem;
+  font-size: 0.8rem !important;
 }
   }
+  }
+
+    @media (max-width: 991.98px){
+    margin: .5rem;
+
+    h2 a{
+   font-size:1.9rem ;
+    }
+
+    p{
+  font-size: 0.6rem !important;
+}
   }
 `
 
@@ -299,53 +311,38 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="Василий Хуртин" />
       <HeroContainer>
         <HeroMainSection>
-          
-            <h1
-             
+          <h1>Василий Хуртин</h1>
+
+          <p>Architecture / Food / Interior Photographer</p>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <a
+              href="https://www.behance.net/vshrt"
+              style={{ boxShadow: "0 0 0 0", marginRight: "20px" }}
             >
-              Василий Хуртин
-            </h1>
-         
-          
-            <p
-              
-            >
-              Architecture / Food / Interior Photographer
-            </p>
-        
-          
-            <div
-              
-              style={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <a
-                href="https://www.behance.net/vshrt"
-                style={{ boxShadow: "0 0 0 0", marginRight: "20px" }}
-              >
-                <img
-                  src={Behance}
-                  style={{ width: "2.5rem", textColor: "white" }}
-                  alt={"behance"}
-                />
-              </a>
-              <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
-                <img
-                  src={Telegram}
-                  style={{ width: "2.5rem", textColor: "white" }}
-                  alt={"telegram"}
-                />
-              </a>
-            </div>
-         
+              <img
+                src={Behance}
+                style={{ width: "2.5rem", textColor: "white" }}
+                alt={"behance"}
+              />
+            </a>
+            <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
+              <img
+                src={Telegram}
+                style={{ width: "2.5rem", textColor: "white" }}
+                alt={"telegram"}
+              />
+            </a>
+          </div>
         </HeroMainSection>
 
         <LeftRightWrapper>
-          <HeroLeftSection
-            
-          >
+          <HeroLeftSection>
             {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
             {heroTitle}
           </p> */}
@@ -357,9 +354,7 @@ const BlogIndex = ({ data, location }) => {
               alt={data.contentfulHero.heroImage.title}
             />
           </HeroLeftSection>
-          <HeroRightSection
-            
-          >
+          <HeroRightSection>
             {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
             {heroTitle}
           </p> */}
@@ -392,17 +387,14 @@ const BlogIndex = ({ data, location }) => {
                   alt={node.slug}
                 />
               </PostImage>
-              <PostText
-              >
+              <PostText>
                 <h2>
                   <Link style={{ boxShadow: `none` }} to={node.slug}>
                     {title}
                   </Link>
-                </h2>
-
-                <section>
+                </h2>               
                   <p>{node.subtitle}</p>
-                </section>
+                
               </PostText>
             </Post>
           )
@@ -417,7 +409,7 @@ const BlogIndex = ({ data, location }) => {
         <MagazinTextWrapper>
           <h2>Фото для обложки журнала #ПР92</h2>
         </MagazinTextWrapper>
-        <MagazinImageWrapper whileHover={{ scale: 1.1 }}>
+        <MagazinImageWrapper>
           <img alt={"Cover"} src={Cover} />
         </MagazinImageWrapper>
       </SectionMagazinWrapper>
@@ -430,43 +422,43 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-         query {
-           site {
-             siteMetadata {
-               title
-             }
-           }
-           allContentfulPost(limit: 4) {
-             edges {
-               node {
-                 id
-                 title
-                 subtitle
-                 image {
-                   fluid(maxWidth: 1000) {
-                     ...GatsbyContentfulFluid_withWebp
-                   }
-                 }
-                 slug
-               }
-             }
-           }
-           contentfulHero {
-             heroTitle
-             heroImage {
-               title
-               fluid(maxWidth: 1000) {
-                 ...GatsbyContentfulFluid_withWebp
-               }
-             }
-           }
-           contentfulNew {
-             pic {
-               title
-               fluid(maxWidth: 1000) {
-                 ...GatsbyContentfulFluid_withWebp
-               }
-             }
-           }
-         }
-       `
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allContentfulPost(limit: 4) {
+      edges {
+        node {
+          id
+          title
+          subtitle
+          image {
+            fluid(maxWidth: 900) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          slug
+        }
+      }
+    }
+    contentfulHero {
+      heroTitle
+      heroImage {
+        title
+        fluid(maxWidth: 900) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+    }
+    contentfulNew {
+      pic {
+        title
+        fluid(maxWidth: 1000) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+    }
+  }
+`

@@ -18,7 +18,7 @@ const CopyrightWrapperFooter = styled.div`
   width: 50%;
 
   span {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 300;
     color: white;
     font-family: "Roboto", sans-serif;
@@ -46,10 +46,10 @@ const Footer = () => {
             href="https://www.behance.net/vshrt"
             style={{ boxShadow: "0 0 0 0", marginRight: "20px" }}
           >
-            <img src={Behance} style={{ width: "2.5rem" }} alt={"Behance"} />
+            <img src={Behance} style={{ width: "2rem" }} alt={"Behance"} />
           </a>
           <a href="https://tlgg.ru/vs_hrt" style={{ boxShadow: "0 0 0 0" }}>
-            <img src={Telegram} style={{ width: "2.5rem" }} alt={"Telegram"} />
+            <img src={Telegram} style={{ width: "2rem" }} alt={"Telegram"} />
           </a>
         </SocialLinkWrapper>
       </SocialWrapperFooter>

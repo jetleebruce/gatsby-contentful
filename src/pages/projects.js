@@ -80,56 +80,68 @@ p{
   }
   }
 `
+const Arrow = styled.div`
+  margin-top: 3%;
 
+  a {
+    margin: 3rem;
+    text-decoration: none;
+  }
+`
 const Projects = ({ data, location }) => {
   return (
-    <ProjectWrapper>
-      <HeaderWrapper>
-        {data.allContentfulPost.edges.map(({ node }) => {
-          const title = node.title || node.slug
-          console.log(node.slug)
-          return (
-            <Post key={node.slug}>
-              <PostImage>
-                <Img fluid={node.image.fluid} />
-              </PostImage>
-              <PostText>
-                <h3>
-                  <Link style={{ boxShadow: `none` }} to={`/${node.slug}`}>
-                    {title}
-                  </Link>
-                </h3>
+    <>
+      <Arrow>
+        <Link to="/"> &larr; Назад </Link>
+      </Arrow>
+      <ProjectWrapper>
+        <HeaderWrapper>
+          {data.allContentfulPost.edges.map(({ node }) => {
+            const title = node.title || node.slug
+            console.log(node.slug)
+            return (
+              <Post key={node.slug}>
+                <PostImage>
+                  <Img fluid={node.image.fluid} />
+                </PostImage>
+                <PostText>
+                  <h3>
+                    <Link style={{ boxShadow: `none` }} to={`/${node.slug}`}>
+                      {title}
+                    </Link>
+                  </h3>
 
-                <section>
-                  <p>{node.subtitle}</p>
-                </section>
-              </PostText>
-            </Post>
-          )
-        })}
-      </HeaderWrapper>
-    </ProjectWrapper>
+                  <section>
+                    <p>{node.subtitle}</p>
+                  </section>
+                </PostText>
+              </Post>
+            )
+          })}
+        </HeaderWrapper>
+      </ProjectWrapper>
+    </>
   )
 }
 
 export default Projects
 
 export const pageQuery = graphql`
-         query {
-           allContentfulPost(limit: 4) {
-             edges {
-               node {
-                 id
-                 title
-                 subtitle
-                 image {
-                   fluid(maxWidth: 1000) {
-                     ...GatsbyContentfulFluid_withWebp
-                   }
-                 }
-                 slug
-               }
-             }
-           }
-         }
-       `
+  query {
+    allContentfulPost(limit: 4) {
+      edges {
+        node {
+          id
+          title
+          subtitle
+          image {
+            fluid(maxWidth: 1000) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          slug
+        }
+      }
+    }
+  }
+`
