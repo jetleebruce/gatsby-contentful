@@ -5,7 +5,6 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Contact from "../components/contact"
-import Hero from '../components/hero'
 import Footer from "../components/footer"
 import SEO from "../components/seo"
 
@@ -154,6 +153,7 @@ const MagazinImageWrapper = styled.div`
 
   img {
     height: 38rem;
+    width: auto;
   }
 
   @media (max-width: 575.98px) {
@@ -167,6 +167,7 @@ const MagazinTextWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
   span {
     font-family: "Roboto", sans-serif;
     font-size: 20px;
@@ -392,9 +393,8 @@ const BlogIndex = ({ data, location }) => {
                   <Link style={{ boxShadow: `none` }} to={node.slug}>
                     {title}
                   </Link>
-                </h2>               
-                  <p>{node.subtitle}</p>
-                
+                </h2>
+                <p>{node.subtitle}</p>
               </PostText>
             </Post>
           )
