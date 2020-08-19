@@ -56,7 +56,7 @@ const HeroMainSection = styled.div`
   justify-content: center;
   h1 {
     color: #171616;
-    font-weight: 400;
+    font-weight: 600;
     margin: 0 auto;
     padding-bottom: 1rem;
     font-family: "Lato", sans-serif;
@@ -66,7 +66,7 @@ const HeroMainSection = styled.div`
     margin: 0 auto;
     font-family: "Lato", serif;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 1rem;
     text-align: center;
   }
@@ -172,14 +172,14 @@ const MagazinTextWrapper = styled.div`
   flex-direction: column;
 
   span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 20px;
     font-weight: 300;
     justify-content: center;
   }
   h2 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700 bold;
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: 2.5rem;
   }
@@ -242,8 +242,8 @@ const PostText = styled.div`
   }
   h2 a {
     color: #171616;
-    font-size: 1.5rem;
-    font-weight: 400;  
+    font-size: 2rem;
+    font-weight: 500;  
     margin-bottom: 0;  
     font-family: Montserrat,sans-serif;
   
@@ -319,9 +319,7 @@ const BlogIndex = ({ data, location }) => {
       <HeroContainer>
         <HeroMainSection>
           <h1>Vasiliy Khurtin</h1>
-
-          <p>Architecture /Interior Photographer</p>
-
+          <p>Architecture / Interior Photographer</p>
           <div
             style={{
               display: "flex",
@@ -357,7 +355,7 @@ const BlogIndex = ({ data, location }) => {
               fluid={heroImg}
               objectFit="cover"
               // objectPosition="100% 50%"
-              style={{ height: "100%", position: "relative" }}
+              style={{marginTop: "3rem", height: "85%", marginRight:"2rem"}}
               alt={data.contentfulHero.heroImage.title}
             />
           </HeroLeftSection>
@@ -407,9 +405,9 @@ const BlogIndex = ({ data, location }) => {
         })}
       </SectionWrapper>
 
-      <AllProjLink>
+      {/* <AllProjLink>
         <Link to="/projects">Все работы</Link>
-      </AllProjLink>
+      </AllProjLink> */}
 
       <SectionMagazinWrapper>
         <MagazinTextWrapper>

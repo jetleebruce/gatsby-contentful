@@ -8,15 +8,18 @@ const HeaderWrapper = styled.div`
   align-item: center;
 
   h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
     text-transform: uppercase;
     font-size: 2.5rem;
-    color: white;
+    text-align: center;
+    color: #171616;
+    margin-bottom: 3.5rem;
   }
 
   @media (max-width: 575.98px) {
     h3 {
       font-size: 1.5rem;
+      margin-bottom: 3.5rem;
     }
   }
   @media (max-width: 767.98px) {
@@ -31,14 +34,13 @@ const FormSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  background: #141e30;
 
   p {
     align-items: center;
     display: flex;
     justify-content: center;
-    color: white;
-    font-family: "Roboto", sans-serif;
+    color: #171616;
+    font-family: "Lato", sans-serif;
   }
 `
 
@@ -82,7 +84,11 @@ const FormInput = styled.input`
   height: 3rem;
   border-radius: 12px;
   border: none;
+  color: #171616;
   margin-bottom: 1rem;
+  border: 1px solid #171616;
+  padding-left: 10px;
+  padding-right: 10px;
 
   @media (max-width: 575.98px) {
     height: 2.5rem;
@@ -90,6 +96,7 @@ const FormInput = styled.input`
     font-size: 14px;
     padding-left: 10px;
     padding-right: 10px;
+    color: #171616;
   }
 `
 const FormButtonWrapper = styled.div`
@@ -119,7 +126,7 @@ const FormButton = styled.button`
 
 const FormLabel = styled.label`
   margin-bottom: 1rem;
-  color: white;
+  color: #171616;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
 `
@@ -159,7 +166,7 @@ const Contact = () => {
         <HeaderWrapper>
           <h3>для связи</h3>
         </HeaderWrapper>
-        <p>vailiy@gmail.com</p>
+        {/* <p>vailiy@gmail.com</p> */}
         <FormWrapper>
           <Form
             onSubmit={handleSubmit}
