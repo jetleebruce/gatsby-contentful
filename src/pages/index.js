@@ -49,24 +49,26 @@ const HeroContainer = styled.div`
 `
 
 const HeroMainSection = styled.div`
-  width: 50%;
-  background: linear-gradient(#141e30, #28416f);
+  width: 100%;
+  // background: linear-gradient(#141e30, #28416f);
   display: flex;
   flex-direction: column;
   justify-content: center;
   h1 {
-    color: #bcc0c2;
+    color: #171616;
+    font-weight: 400;
     margin: 0 auto;
     padding-bottom: 1rem;
     font-family: "Lato", sans-serif;
   }
   p {
-    color: #bcc0c2;
+    color: #171616
     margin: 0 auto;
     font-family: "Lato", serif;
     font-size: 20px;
     font-weight: 300;
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   @media (max-width: 575.98px) {
@@ -82,6 +84,7 @@ const HeroMainSection = styled.div`
 
     p {
       font-size: 16px;
+      text-align: center;
     }
   }
 
@@ -103,7 +106,7 @@ const HeroMainSection = styled.div`
 const LeftRightWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 100%;
 
   @media (max-width: 767.98px) {
     display: flex;
@@ -125,7 +128,7 @@ const LeftRightWrapper = styled.div`
 `
 
 const HeroLeftSection = styled.div`
-  width: 50%;
+  width: 100%;
 `
 
 const HeroRightSection = styled.div`
@@ -232,22 +235,25 @@ const PostImage = styled.div`
 
 const PostText = styled.div`
   
-  position: absolute;
-  top: 0;
-  margin: 2.5rem;
- 
+  margin: 0;
+  // margin-bottom: 2px;
+  h2{
+      margin-block-end: 0 !important;
+  }
   h2 a {
-    color: #f2f2f2;
-    font-size: 2.5rem;  
-    margin-bottom: 0;
-    background-color: darkblue;
+    color: #171616;
+    font-size: 1.5rem;
+    font-weight: 400;  
+    margin-bottom: 0;  
     font-family: Montserrat,sans-serif;
+  
+    
   }
 
   p {
-    color: #f2f2f2;;
-    background-color: darkblue;
+    color: #171616;
     font-family: Montserrat,sans-serif;
+    display: none;
   }
 
   @media (max-width: 575.98px){
@@ -312,9 +318,9 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="Василий Хуртин" />
       <HeroContainer>
         <HeroMainSection>
-          <h1>Василий Хуртин</h1>
+          <h1>Vasiliy Khurtin</h1>
 
-          <p>Architecture / Food / Interior Photographer</p>
+          <p>Architecture /Interior Photographer</p>
 
           <div
             style={{
@@ -345,20 +351,20 @@ const BlogIndex = ({ data, location }) => {
         <LeftRightWrapper>
           <HeroLeftSection>
             {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
-            {heroTitle}
-          </p> */}
+              {heroTitle}
+            </p> */}
             <Img
               fluid={heroImg}
               objectFit="cover"
-              objectPosition="50% 50%"
+              // objectPosition="100% 50%"
               style={{ height: "100%", position: "relative" }}
               alt={data.contentfulHero.heroImage.title}
             />
           </HeroLeftSection>
-          <HeroRightSection>
-            {/* <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
-            {heroTitle}
-          </p> */}
+          {/* <HeroRightSection>
+            <p style={{ position: "absolute", zIndex: 10, color: "#bcc0c2" }}>
+              {heroTitle}
+            </p>
             <Img
               fluid={heroImgRight}
               objectFit="cover"
@@ -370,7 +376,7 @@ const BlogIndex = ({ data, location }) => {
               }}
               alt={data.contentfulNew.pic.title}
             />
-          </HeroRightSection>
+          </HeroRightSection> */}
         </LeftRightWrapper>
       </HeroContainer>
 
@@ -379,6 +385,14 @@ const BlogIndex = ({ data, location }) => {
           const title = node.title || node.slug
           return (
             <Post key={node.slug}>
+              <PostText>
+                <h2>
+                  <Link style={{ boxShadow: `none` }} to={node.slug}>
+                    {title}
+                  </Link>
+                </h2>
+                <p>{node.subtitle}</p>
+              </PostText>
               <PostImage>
                 <Img
                   fluid={node.image.fluid}
@@ -388,14 +402,6 @@ const BlogIndex = ({ data, location }) => {
                   alt={node.slug}
                 />
               </PostImage>
-              <PostText>
-                <h2>
-                  <Link style={{ boxShadow: `none` }} to={node.slug}>
-                    {title}
-                  </Link>
-                </h2>
-                <p>{node.subtitle}</p>
-              </PostText>
             </Post>
           )
         })}
@@ -428,7 +434,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPost(limit: 4) {
+    allContentfulPost {
       edges {
         node {
           id

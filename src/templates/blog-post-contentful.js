@@ -12,7 +12,7 @@ const PostWrapper = styled.div`
 
 const HeaderWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 1px;
   grid-row-gap: 0px;
@@ -99,9 +99,9 @@ const BlogPostContentfulTemplate = ({ data, pageContext, location }) => {
               }}
             />
           </HeaderTextWrapper>
-          <ImageHeaderWrapper>
+          {/* <ImageHeaderWrapper>
             <Img fluid={post.image.fluid} />
-          </ImageHeaderWrapper>
+          </ImageHeaderWrapper> */}
         </HeaderWrapper>
 
         <GalleryWrapper>
